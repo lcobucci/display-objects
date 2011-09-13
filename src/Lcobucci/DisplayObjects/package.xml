@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+    http://pear.php.net/dtd/tasks-1.0.xsd
+    http://pear.php.net/dtd/package-2.0
+    http://pear.php.net/dtd/package-2.0.xsd">
+ <name>DisplayObjects</name>
+ <channel>lcobucci.github.com</channel>
+ <summary>Small framework to create UI components</summary>
+ <description>It&apos;s not a template system, but a way to create UI components and use them as a object from your classes</description>
+ <lead>
+  <name>Luís Otávio Cobucci Oblonczyk</name>
+  <user>lcobucci</user>
+  <email>lcobucci@gmail.com</email>
+  <active>yes</active>
+ </lead>
+ <date>2011-09-13</date>
+ <time>17:18:10</time>
+ <version>
+  <release>0.0.1</release>
+  <api>0.0.1</api>
+ </version>
+ <stability>
+  <release>alpha</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+ <notes>
+Initial release
+ </notes>
+ <contents>
+  <dir baseinstalldir="Lcobucci/DisplayObjects" name="/">
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="39518776f2025950243e96b00e53e810" name="Components/SimpleList.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="7f1f7ada5c4a0881fb53ff944c44abf5" name="Components/SimpleList.phtml" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="6d2efd8bba33a9d7bfc668026e487c5c" name="Components/Datagrid/Datagrid.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="db5956fcd65686c1a63943603ae8734f" name="Core/ItemRenderer.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="f763b3f6da8e2fea2543b476f85fb710" name="Core/UIComponent.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="32c2e2259d514b8c5879871e267e93af" name="Core/UIComponentNotFoundException.php" role="php" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.0.1</release>
+    <api>0.0.1</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-09-13</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+Initial release
+   </notes>
+  </release>
+ </changelog>
+</package>
