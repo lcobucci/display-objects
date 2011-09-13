@@ -8,7 +8,7 @@ abstract class ItemRenderer extends UIComponent
 	 *
 	 * @var object
 	 */
-	private $_item;
+	private $item;
 
 	/**
 	 * Renders an object
@@ -18,7 +18,7 @@ abstract class ItemRenderer extends UIComponent
 	 */
 	public function render($item)
 	{
-		$this->_item = $item;
+		$this->item = $item;
 
 		return $this;
 	}
@@ -30,6 +30,6 @@ abstract class ItemRenderer extends UIComponent
 	 */
 	public function getItem()
 	{
-		return $this->_item;
+		return $this->item;
 	}
 }
