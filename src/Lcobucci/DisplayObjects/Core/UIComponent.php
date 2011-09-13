@@ -15,7 +15,7 @@ abstract class UIComponent
 	 *
 	 * @var string
 	 */
-	private static $templatesDir = 'templates/';
+	private static $templatesDir = array('');
 
 	private $_namespaceSeparator = '\\';
 	private $_templateExtension = '.phtml';
@@ -25,19 +25,19 @@ abstract class UIComponent
 	 *
 	 * @param string $dir
 	 */
-	public static function setTemplatesDir($dir)
+	public static function addTemplatesDir($dir)
 	{
 		if (substr($dir, -1, 1) != DIRECTORY_SEPARATOR) {
 			$dir = $dir . DIRECTORY_SEPARATOR;
+		} elseif (!in_array($dir, self::$templatesDir)) {
+			self::$templatesDir[] = $dir;
 		}
-
-		self::$templatesDir = $dir;
 	}
 
 	/**
 	 * Returns the template's directory
 	 *
-	 * @return string
+	 * @return array
 	 */
 	protected function getTemplatesDir()
 	{
@@ -91,13 +91,15 @@ abstract class UIComponent
 	 */
 	protected function getFile($class)
 	{
-		$templateFile = $this->getTemplatesDir() . $this->getPath($class);
+		foreach ($this->getTemplatesDir() as $dir) {
+			$templateFile = $dir . $this->getPath($class);
 
-		if (!$this->templateExists($templateFile)) {
-			throw new UIComponentNotFoundException('Template file not found for class ' . $class . '.');
+			if ($this->templateExists($templateFile)) {
+				return $templateFile;
+			}
 		}
 
-		return $templateFile;
+		throw new UIComponentNotFoundException('Template file not found for class ' . $class . '.');
 	}
 
 	/**
