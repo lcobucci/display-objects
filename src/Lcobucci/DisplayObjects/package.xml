@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
-    http://pear.php.net/dtd/tasks-1.0.xsd
-    http://pear.php.net/dtd/package-2.0
-    http://pear.php.net/dtd/package-2.0.xsd">
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
  <name>DisplayObjects</name>
  <channel>lcobucci.github.com</channel>
  <summary>Small framework to create UI components</summary>
@@ -13,11 +10,11 @@
   <email>lcobucci@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2011-09-13</date>
- <time>17:18:10</time>
+ <date>2011-09-14</date>
+ <time>15:57:37</time>
  <version>
-  <release>0.0.1</release>
-  <api>0.0.1</api>
+  <release>0.0.2</release>
+  <api>0.0.2</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -25,7 +22,7 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
-Initial release
+Small fix at the UIComponent::addTemplatesDir() method
  </notes>
  <contents>
   <dir baseinstalldir="Lcobucci/DisplayObjects" name="/">
@@ -33,7 +30,7 @@ Initial release
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="7f1f7ada5c4a0881fb53ff944c44abf5" name="Components/SimpleList.phtml" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="6d2efd8bba33a9d7bfc668026e487c5c" name="Components/Datagrid/Datagrid.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="db5956fcd65686c1a63943603ae8734f" name="Core/ItemRenderer.php" role="php" />
-   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="f763b3f6da8e2fea2543b476f85fb710" name="Core/UIComponent.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="1962370ca58394308ba6096fbebbee97" name="Core/UIComponent.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="32c2e2259d514b8c5879871e267e93af" name="Core/UIComponentNotFoundException.php" role="php" />
   </dir>
  </contents>
@@ -62,6 +59,21 @@ Initial release
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 Initial release
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.2</release>
+    <api>0.0.2</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2011-09-14</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+Small fix at the UIComponent::addTemplatesDir() method
    </notes>
   </release>
  </changelog>
