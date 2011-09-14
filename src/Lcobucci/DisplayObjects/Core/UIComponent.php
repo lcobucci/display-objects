@@ -29,7 +29,9 @@ abstract class UIComponent
 	{
 		if (substr($dir, -1, 1) != DIRECTORY_SEPARATOR) {
 			$dir = $dir . DIRECTORY_SEPARATOR;
-		} elseif (!in_array($dir, self::$templatesDir)) {
+		}
+
+		if (!in_array($dir, self::$templatesDir)) {
 			self::$templatesDir[] = $dir;
 		}
 	}
