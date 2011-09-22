@@ -1,0 +1,18 @@
+<table id="<?php echo $this->getId(); ?>" class="<?php echo $this->getStyleClass(); ?>" style="<?php echo $this->getInlineStyle(); ?>">
+	<thead>
+		<tr>
+		<?php foreach ($this->getColumns() as $column) { ?>
+			<th><?php echo $column->getLabel(); ?></th>
+		<?php } ?>
+		</tr>
+	</thead>
+	<tbody>
+	<?php foreach ($this->getDataProvider() as $item) { ?>
+		<tr>
+			<?php foreach ($this->getColumns() as $column) { ?>
+			<td><?php echo $column->getContent($item); ?></td>
+			<?php } ?>
+		</tr>
+	<?php } ?>
+	</tbody>
+</table>

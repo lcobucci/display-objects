@@ -21,15 +21,25 @@ class Datagrid extends UIComponent
 	protected $columns;
 
 	/**
+	 * @var string
+	 */
+	protected $styleClass;
+
+	/**
+	 * @var string
+	 */
+	protected $inlineStyle;
+
+	/**
 	 * @param string $id
 	 * @param array $dataProvider
 	 * @param array $columns
 	 */
 	public function __construct($id, array $dataProvider, array $columns)
 	{
-		$this->setId($id);
-		$this->setDataProvider($dataProvider);
-		$this->setColumns($columns);
+		$this->id = $id;
+		$this->dataProvider = $dataProvider;
+		$this->columns = $columns;
 	}
 
 	/**
@@ -37,19 +47,9 @@ class Datagrid extends UIComponent
 	 *
 	 * @return string
 	 */
-	public function getId()
+	protected function getId()
 	{
 		return $this->id;
-	}
-
-	/**
-	 * Configures the $id
-	 *
-	 * @param string $id
-	 */
-	protected function setId($id)
-	{
-		$this->id = $id;
 	}
 
 	/**
@@ -57,19 +57,9 @@ class Datagrid extends UIComponent
 	 *
 	 * @return array
 	 */
-	public function getDataProvider()
+	protected function getDataProvider()
 	{
 		return $this->dataProvider;
-	}
-
-	/**
-	 * Configures the $dataProvider
-	 *
-	 * @param array $dataProvider
-	 */
-	protected function setDataProvider(array $dataProvider)
-	{
-		$this->dataProvider = $dataProvider;
 	}
 
 	/**
@@ -77,18 +67,48 @@ class Datagrid extends UIComponent
 	 *
 	 * @return array
 	 */
-	public function getColumns()
+	protected function getColumns()
 	{
 		return $this->columns;
 	}
 
 	/**
-	 * Configures the $columns
+	 * Returns the $styleClass
 	 *
-	 * @param array $columns
+	 * @return string
 	 */
-	protected function setColumns(array $columns)
+	public function getStyleClass()
 	{
-		$this->columns = $columns;
+		return $this->styleClass;
+	}
+
+	/**
+	 * Configures the $styleClass
+	 *
+	 * @param string $styleClass
+	 */
+	public function setStyleClass($styleClass)
+	{
+		$this->styleClass = $styleClass;
+	}
+
+	/**
+	 * Returns the $inlineStyle
+	 *
+	 * @return string
+	 */
+	public function getInlineStyle()
+	{
+		return $this->inlineStyle;
+	}
+
+	/**
+	 * Configures the $inlineStyle
+	 *
+	 * @param string $inlineStyle
+	 */
+	public function setInlineStyle($inlineStyle)
+	{
+		$this->inlineStyle = $inlineStyle;
 	}
 }
