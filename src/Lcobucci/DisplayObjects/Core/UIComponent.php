@@ -17,8 +17,10 @@ abstract class UIComponent
 	 */
 	private static $templatesDir = array('');
 
-	private $_namespaceSeparator = '\\';
-	private $_templateExtension = '.phtml';
+	/**
+	 * @var string
+	 */
+	private $baseUrl;
 
 	/**
 	 * Configures the template's directory
@@ -68,18 +70,18 @@ abstract class UIComponent
 		$fileName = '';
 		$namespace = '';
 
-		if (false !== ($lastNsPos = strripos($class, $this->_namespaceSeparator))) {
+		if (false !== ($lastNsPos = strripos($class, '\\'))) {
 			$namespace = substr($class, 0, $lastNsPos);
 			$class = substr($class, $lastNsPos + 1);
 
-			$fileName = str_replace($this->_namespaceSeparator, DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
+			$fileName = str_replace('\\', DIRECTORY_SEPARATOR, $namespace) . DIRECTORY_SEPARATOR;
 
 			if (strpos($fileName, DIRECTORY_SEPARATOR) === 0) {
 				$fileName = substr($fileName, 1);
 			}
 		}
 
-		$fileName .= str_replace('_', DIRECTORY_SEPARATOR, $class) . $this->_templateExtension;
+		$fileName .= str_replace('_', DIRECTORY_SEPARATOR, $class) . '.phtml';
 
 		return $fileName;
 	}
@@ -148,5 +150,21 @@ abstract class UIComponent
 		} catch (\Exception $e) {
 			return '<pre>' . $e . '</pre>';
 		}
+	}
+
+	/**
+	 * @param string $baseUrl
+	 */
+	public function setBaseUrl($baseUrl)
+	{
+		$this->baseUrl = $baseUrl;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getBaseUrl()
+	{
+		return $this->baseUrl;
 	}
 }
