@@ -2,7 +2,7 @@
 	<thead>
 		<tr>
 		<?php foreach ($this->getColumns() as $column) { ?>
-			<th><?php echo $column->getLabel(); ?></th>
+			<th style="width: <?php echo $column->getWidth(); ?>;"><?php echo $column->getLabel(); ?></th>
 		<?php } ?>
 		</tr>
 	</thead>

@@ -16,13 +16,20 @@ class DatagridColumn
 	private $content;
 
 	/**
+	 * @var string
+	 */
+	private $width;
+
+	/**
 	 * @param string $label
 	 * @param \Lcobucci\DisplayObjects\Core\ItemRenderer|string $content
+	 * @param string $width
 	 */
-	public function __construct($label, $content)
+	public function __construct($label, $content, $width)
 	{
 		$this->label = $label;
 		$this->content = $content;
+		$this->width = $width;
 	}
 
 	/**
@@ -31,6 +38,14 @@ class DatagridColumn
 	public function getLabel()
 	{
 		return $this->label;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getWidth()
+	{
+		return $this->width;
 	}
 
 	/**
