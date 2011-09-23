@@ -47,7 +47,7 @@ class Datagrid extends UIComponent
 	 *
 	 * @return string
 	 */
-	protected function getId()
+	public function getId()
 	{
 		return $this->id;
 	}
