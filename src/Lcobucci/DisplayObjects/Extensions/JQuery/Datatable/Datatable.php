@@ -25,6 +25,7 @@ class Datatable extends UIComponent
 	public function __construct($id, array $dataProvider, array $columns, array $options = null)
 	{
 		$this->table = new Datagrid($id, $dataProvider, $columns);
+		$this->options = $options;
 	}
 
 	/**
