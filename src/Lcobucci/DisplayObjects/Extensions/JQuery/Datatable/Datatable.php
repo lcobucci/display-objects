@@ -1,9 +1,10 @@
 <?php
 namespace Lcobucci\DisplayObjects\Extensions\JQuery\Datatable;
 
+use \Lcobucci\DisplayObjects\Core\UIComponent;
 use \Lcobucci\DisplayObjects\Components\Datagrid\Datagrid;
 
-class Datatable
+class Datatable extends UIComponent
 {
 	/**
 	 * @var \Lcobucci\DisplayObjects\Components\Datagrid\Datagrid
