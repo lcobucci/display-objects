@@ -50,4 +50,24 @@ class Datatable extends UIComponent
 	{
 		return $this->options ? json_encode($this->options) : '';
 	}
+
+	/**
+	 * Configures the $styleClass
+	 *
+	 * @param string $styleClass
+	 */
+	public function setStyleClass($styleClass)
+	{
+		$this->table->setStyleClass($styleClass);
+	}
+
+	/**
+	 * Configures the $inlineStyle
+	 *
+	 * @param string $inlineStyle
+	 */
+	public function setInlineStyle($inlineStyle)
+	{
+		$this->table->setInlineStyle($inlineStyle);
+	}
 }
