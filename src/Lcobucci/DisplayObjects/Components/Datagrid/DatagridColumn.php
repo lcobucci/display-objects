@@ -30,7 +30,7 @@ class DatagridColumn
 	 */
 	public function getLabel()
 	{
-		return $this->label ?: '&nbsp;';
+		return $this->label;
 	}
 
 	/**
@@ -55,6 +55,10 @@ class DatagridColumn
 		$props = explode('.', $this->content);
 
 		foreach ($props as $property) {
+			if (is_null($item)) {
+				return $item;
+			}
+
 			if (strpos($property, '(') !== false) {
 				$item = $this->callMethod($item, $property);
 			} elseif (method_exists($item, 'get' . ucfirst($property))) {
