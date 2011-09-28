@@ -17,6 +17,11 @@ class Datatable extends UIComponent
 	private $options;
 
 	/**
+	 * @var string
+	 */
+	private $jsCommands;
+
+	/**
 	 * @param string $id
 	 * @param array $dataProvider
 	 * @param array $columns
@@ -26,6 +31,7 @@ class Datatable extends UIComponent
 	{
 		$this->table = new Datagrid($id, $dataProvider, $columns);
 		$this->options = $options;
+		$this->jsCommands = '';
 	}
 
 	/**
@@ -70,5 +76,21 @@ class Datatable extends UIComponent
 	public function setInlineStyle($inlineStyle)
 	{
 		$this->table->setInlineStyle($inlineStyle);
+	}
+
+	/**
+	 * @param string $command
+	 */
+	public function appendJsCommand($command)
+	{
+		$this->jsCommands .= $command;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getJsCommands()
+	{
+		return $this->jsCommands;
 	}
 }
