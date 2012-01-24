@@ -29,17 +29,24 @@ class Datagrid extends UIComponent
 	 * @var string
 	 */
 	protected $inlineStyle;
-
+	
+	/**
+	 * @var boolean
+	 */
+	protected $displayFooterLabels;
+	
 	/**
 	 * @param string $id
 	 * @param array $dataProvider
 	 * @param array $columns
+	 * @param boolean $displayFooterLabels
 	 */
-	public function __construct($id, array $dataProvider, array $columns)
+	public function __construct($id, array $dataProvider, array $columns, $displayFooterLabels = false)
 	{
 		$this->id = $id;
 		$this->dataProvider = $dataProvider;
 		$this->columns = $columns;
+		$this->displayFooterLabels = $displayFooterLabels;
 	}
 
 	/**
@@ -110,5 +117,21 @@ class Datagrid extends UIComponent
 	public function setInlineStyle($inlineStyle)
 	{
 		$this->inlineStyle = $inlineStyle;
+	}
+	
+	/**
+	 * @param boolean $displayFooterLabels
+	 */
+	public function setDisplayFooterLabels($displayFooterLabels)
+	{
+		$this->displayFooterLabels = $displayFooterLabels;
+	}
+	
+	/**
+	 * @return boolean
+	 */
+	public function willDisplayLabelsOnFooter()
+	{
+		return $this->displayFooterLabels;
 	}
 }
