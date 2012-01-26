@@ -15,6 +15,11 @@ class Datatable extends UIComponent
 	 * @var array
 	 */
 	private $options;
+	
+	/**
+	 * @var array
+	 */
+	private $filters;
 
 	/**
 	 * @var string
@@ -31,6 +36,7 @@ class Datatable extends UIComponent
 	{
 		$this->table = new Datagrid($id, $dataProvider, $columns);
 		$this->options = $options;
+		$this->filters = array();
 		$this->jsCommands = '';
 	}
 
@@ -92,5 +98,30 @@ class Datatable extends UIComponent
 	public function getJsCommands()
 	{
 		return $this->jsCommands;
+	}
+	
+	/**
+	 * @param Lcobucci\DisplayObjects\Extensions\JQuery\Datatable\DatatableColumnFilter $filter
+	 */
+	public function appendFilter(DatatableColumnFilter $filter)
+	{
+		$this->table->setDisplayFooterLabels(true);
+		$this->filters[] = $filter;
+	}
+	
+	/**
+	 * @return boolean
+	 */
+	public function hasFilters()
+	{
+		return isset($this->filters[0]);
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getFilters()
+	{
+		return json_encode(array('aoColumns' => $this->filters));
 	}
 }

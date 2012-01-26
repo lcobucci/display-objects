@@ -15,4 +15,13 @@
 		</tr>
 	<?php } ?>
 	</tbody>
+	<?php if ($this->willDisplayLabelsOnFooter()) { ?>
+	<tfoot>
+		<tr>
+		<?php foreach ($this->getColumns() as $column) { ?>
+			<th style="width: <?php echo $column->getWidth(); ?>;"><?php echo $column->getLabel(); ?></th>
+		<?php } ?>
+		</tr>
+	</tfoot>
+	<?php } ?>
 </table>
