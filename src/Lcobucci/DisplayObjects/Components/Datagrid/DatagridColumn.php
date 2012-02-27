@@ -21,15 +21,22 @@ class DatagridColumn
 	private $width;
 
 	/**
+	 * @var string
+	 */
+	private $alignment;
+
+	/**
 	 * @param string $label
 	 * @param \Lcobucci\DisplayObjects\Core\ItemRenderer|string $content
 	 * @param string $width
+	 * @param string $align
 	 */
-	public function __construct($label, $content, $width)
+	public function __construct($label, $content, $width, $alignment = 'left')
 	{
 		$this->label = $label;
 		$this->content = $content;
 		$this->width = $width;
+		$this->alignment = $alignment;
 	}
 
 	/**
@@ -46,6 +53,14 @@ class DatagridColumn
 	public function getWidth()
 	{
 		return $this->width;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getAlignment()
+	{
+		return $this->alignment;
 	}
 
 	/**
