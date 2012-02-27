@@ -2,7 +2,9 @@
 	<thead>
 		<tr>
 		<?php foreach ($this->getColumns() as $column) { ?>
-			<th style="width: <?php echo $column->getWidth(); ?>; text-align: center;"><?php echo $column->getLabel(); ?></th>
+			<th class="<?php echo $column->getClass(); ?>">
+				<?php echo $column->getLabel(); ?>
+			</th>
 		<?php } ?>
 		</tr>
 	</thead>
@@ -10,7 +12,7 @@
 	<?php foreach ($this->getDataProvider() as $item) { ?>
 		<tr>
 			<?php foreach ($this->getColumns() as $column) { ?>
-			<td style="text-align:<?php echo $column->getAlignment(); ?>;">
+			<td class="<?php echo $column->getClass(); ?>;">
 				<?php echo $column->getContent($item); ?>
 			</td>
 			<?php } ?>
@@ -21,7 +23,9 @@
 	<tfoot>
 		<tr>
 		<?php foreach ($this->getColumns() as $column) { ?>
-			<th style="width: <?php echo $column->getWidth(); ?>; text-align: center;"><?php echo $column->getLabel(); ?></th>
+			<th class="<?php echo $column->getClass(); ?>">
+				<?php echo $column->getLabel(); ?>
+			</th>
 		<?php } ?>
 		</tr>
 	</tfoot>

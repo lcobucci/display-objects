@@ -18,25 +18,18 @@ class DatagridColumn
 	/**
 	 * @var string
 	 */
-	private $width;
-
-	/**
-	 * @var string
-	 */
-	private $alignment;
+	private $class;
 
 	/**
 	 * @param string $label
 	 * @param \Lcobucci\DisplayObjects\Core\ItemRenderer|string $content
-	 * @param string $width
-	 * @param string $align
+	 * @param string $class
 	 */
-	public function __construct($label, $content, $width, $alignment = 'left')
+	public function __construct($label, $content, $class = '')
 	{
 		$this->label = $label;
 		$this->content = $content;
-		$this->width = $width;
-		$this->alignment = $alignment;
+		$this->class = $class;
 	}
 
 	/**
@@ -50,17 +43,9 @@ class DatagridColumn
 	/**
 	 * @return string
 	 */
-	public function getWidth()
+	public function getClass()
 	{
-		return $this->width;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getAlignment()
-	{
-		return $this->alignment;
+		return $this->class;
 	}
 
 	/**
