@@ -12,7 +12,7 @@
 	<?php foreach ($this->getDataProvider() as $item) { ?>
 		<tr>
 			<?php foreach ($this->getColumns() as $column) { ?>
-			<td class="<?php echo $column->getClass(); ?>;">
+			<td class="<?php echo $column->getClass(); ?>">
 				<?php echo $column->getContent($item); ?>
 			</td>
 			<?php } ?>
