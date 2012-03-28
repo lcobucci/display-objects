@@ -52,13 +52,17 @@ class DatagridColumn
 	 * @param object $item
 	 * @return \Lcobucci\DisplayObjects\Core\ItemRenderer|string
 	 */
-	public function getContent($item)
+	public function getContent($item = null)
 	{
 		if ($this->content instanceof ItemRenderer) {
 			return $this->content->render($item);
-		} else {
+		}
+
+		if ($this->content !== null) {
 			return $this->renderProperty($item);
 		}
+
+		return $this->content;
 	}
 
 	/**
