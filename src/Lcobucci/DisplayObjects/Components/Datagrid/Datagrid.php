@@ -29,12 +29,12 @@ class Datagrid extends UIComponent
 	 * @var string
 	 */
 	protected $inlineStyle;
-	
+
 	/**
 	 * @var boolean
 	 */
 	protected $displayFooterLabels;
-	
+
 	/**
 	 * @param string $id
 	 * @param array $dataProvider
@@ -74,7 +74,7 @@ class Datagrid extends UIComponent
 	 *
 	 * @return array
 	 */
-	protected function getColumns()
+	public function getColumns()
 	{
 		return $this->columns;
 	}
@@ -118,7 +118,7 @@ class Datagrid extends UIComponent
 	{
 		$this->inlineStyle = $inlineStyle;
 	}
-	
+
 	/**
 	 * @param boolean $displayFooterLabels
 	 */
@@ -126,7 +126,7 @@ class Datagrid extends UIComponent
 	{
 		$this->displayFooterLabels = $displayFooterLabels;
 	}
-	
+
 	/**
 	 * @return boolean
 	 */
