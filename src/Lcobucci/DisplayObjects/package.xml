@@ -10,11 +10,11 @@
   <email>lcobucci@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2011-09-14</date>
- <time>15:57:37</time>
+ <date>2012-05-31</date>
+ <time>11:09:10</time>
  <version>
-  <release>0.0.2</release>
-  <api>0.0.2</api>
+  <release>0.0.12</release>
+  <api>0.0.12</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -22,16 +22,21 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
-Small fix at the UIComponent::addTemplatesDir() method
+BaseUrl changed to be static
  </notes>
  <contents>
   <dir baseinstalldir="Lcobucci/DisplayObjects" name="/">
-   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="39518776f2025950243e96b00e53e810" name="Components/SimpleList.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="db9c9e9b5dc8aec24d2fe6c9833df8d7" name="Components/SimpleList.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="7f1f7ada5c4a0881fb53ff944c44abf5" name="Components/SimpleList.phtml" role="php" />
-   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="6d2efd8bba33a9d7bfc668026e487c5c" name="Components/Datagrid/Datagrid.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="88cd0c3f9e3a4c86a84f77b03366888e" name="Components/Datagrid/Datagrid.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="84a55b83a33805d5f674fdc07f9f1aad" name="Components/Datagrid/Datagrid.phtml" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="4bd2e77b1baf53087a03fd52f7a8baa6" name="Components/Datagrid/DatagridColumn.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="db5956fcd65686c1a63943603ae8734f" name="Core/ItemRenderer.php" role="php" />
-   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="1962370ca58394308ba6096fbebbee97" name="Core/UIComponent.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="427d5aca0a6b00b4a7220a8f7faffee7" name="Core/UIComponent.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="32c2e2259d514b8c5879871e267e93af" name="Core/UIComponentNotFoundException.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="f22990cd5732eca4d75ba3fb888d9595" name="Extensions/JQuery/Datatable/Datatable.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="cfc4e584c84dcbf33ec1e0e00cb779e8" name="Extensions/JQuery/Datatable/Datatable.phtml" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="46c8bd539d16d7a8259db862896117a9" name="Extensions/JQuery/Datatable/DatatableColumnFilter.php" role="php" />
   </dir>
  </contents>
  <dependencies>
@@ -74,6 +79,51 @@ Initial release
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 Small fix at the UIComponent::addTemplatesDir() method
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.10</release>
+    <api>0.0.10</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-03-22</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+Added the way to change the CSS class of the column
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.11</release>
+    <api>0.0.11</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-04-09</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+Small changes
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.12</release>
+    <api>0.0.12</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-05-31</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+BaseUrl changed to be static
    </notes>
   </release>
  </changelog>
