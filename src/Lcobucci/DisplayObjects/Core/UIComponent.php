@@ -20,7 +20,7 @@ abstract class UIComponent
 	/**
 	 * @var string
 	 */
-	private $baseUrl;
+	private static $baseUrl;
 
 	/**
 	 * Configures the template's directory
@@ -155,9 +155,17 @@ abstract class UIComponent
 	/**
 	 * @param string $baseUrl
 	 */
+	public static function setDefaultBaseUrl($baseUrl)
+	{
+		self::$baseUrl = $baseUrl;
+	}
+
+	/**
+	 * @param string $baseUrl
+	 */
 	public function setBaseUrl($baseUrl)
 	{
-		$this->baseUrl = $baseUrl;
+		self::$baseUrl = $baseUrl;
 	}
 
 	/**
@@ -165,6 +173,6 @@ abstract class UIComponent
 	 */
 	public function getBaseUrl()
 	{
-		return $this->baseUrl;
+		return self::$baseUrl;
 	}
 }
