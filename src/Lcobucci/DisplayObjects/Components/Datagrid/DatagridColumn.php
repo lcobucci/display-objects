@@ -130,6 +130,7 @@ class DatagridColumn
 
 	/**
 	 * @param string $content
+	 * @param object $item
 	 * @return string
 	 */
 	protected function formatContent($content, $item)
