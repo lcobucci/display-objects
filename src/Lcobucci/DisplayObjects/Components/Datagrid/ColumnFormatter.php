@@ -5,7 +5,8 @@ interface ColumnFormatter
 {
 	/**
 	 * @param string $content
+	 * @param object $item
 	 * @return string
 	 */
-	public function format($content);
+	public function format($content, $item);
 }
