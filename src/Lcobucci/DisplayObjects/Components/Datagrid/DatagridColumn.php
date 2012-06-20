@@ -70,7 +70,7 @@ class DatagridColumn
 		}
 
 		if ($this->formatter !== null) {
-			$content = $this->formatContent($content);
+			$content = $this->formatContent($content, $item);
 		}
 
 		return $content;
@@ -119,9 +119,9 @@ class DatagridColumn
 		}
 
 		if (!is_callable($formatter)
-			&& !$formatter instanceof ColumnFormatter) {
+		&& !$formatter instanceof ColumnFormatter) {
 			throw new InvalidArgumentException(
-				'Formatter must be a callable or an instance of ColumnFormatter'
+			'Formatter must be a callable or an instance of ColumnFormatter'
 			);
 		}
 
@@ -132,14 +132,14 @@ class DatagridColumn
 	 * @param string $content
 	 * @return string
 	 */
-	protected function formatContent($content)
+	protected function formatContent($content, $item)
 	{
 		if (is_callable($this->formatter)) {
-			return call_user_func($this->formatter, $content);
+			return call_user_func($this->formatter, $content, $item);
 		}
 
 		if ($this->formatter instanceof ColumnFormatter) {
-			return $this->formatter->format($content);
+			return $this->formatter->format($content, $item);
 		}
 	}
 }
