@@ -161,6 +161,14 @@ abstract class UIComponent
 	}
 
 	/**
+	 * @return string
+	 */
+	public static function getDefaultBaseUrl()
+	{
+		return self::$baseUrl;
+	}
+
+	/**
 	 * @param string $baseUrl
 	 */
 	public function setBaseUrl($baseUrl)
