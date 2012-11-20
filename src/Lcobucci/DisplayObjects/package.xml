@@ -10,11 +10,11 @@
   <email>lcobucci@gmail.com</email>
   <active>yes</active>
  </lead>
- <date>2012-05-31</date>
- <time>11:09:10</time>
+ <date>2012-11-20</date>
+ <time>17:20:44</time>
  <version>
-  <release>0.0.12</release>
-  <api>0.0.12</api>
+  <release>0.0.14</release>
+  <api>0.0.14</api>
  </version>
  <stability>
   <release>alpha</release>
@@ -22,17 +22,18 @@
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
  <notes>
-BaseUrl changed to be static
+Added a way to retrieve the base url statically
  </notes>
  <contents>
   <dir baseinstalldir="Lcobucci/DisplayObjects" name="/">
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="db9c9e9b5dc8aec24d2fe6c9833df8d7" name="Components/SimpleList.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="7f1f7ada5c4a0881fb53ff944c44abf5" name="Components/SimpleList.phtml" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="49dbc8a3b2000130ef242067d2b26180" name="Components/Datagrid/ColumnFormatter.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="88cd0c3f9e3a4c86a84f77b03366888e" name="Components/Datagrid/Datagrid.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="84a55b83a33805d5f674fdc07f9f1aad" name="Components/Datagrid/Datagrid.phtml" role="php" />
-   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="4bd2e77b1baf53087a03fd52f7a8baa6" name="Components/Datagrid/DatagridColumn.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="b86bbae61ef9563aceda6b6c393f3981" name="Components/Datagrid/DatagridColumn.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="db5956fcd65686c1a63943603ae8734f" name="Core/ItemRenderer.php" role="php" />
-   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="427d5aca0a6b00b4a7220a8f7faffee7" name="Core/UIComponent.php" role="php" />
+   <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="227aeec40c3d123153e8dba045470b4f" name="Core/UIComponent.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="32c2e2259d514b8c5879871e267e93af" name="Core/UIComponentNotFoundException.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="f22990cd5732eca4d75ba3fb888d9595" name="Extensions/JQuery/Datatable/Datatable.php" role="php" />
    <file baseinstalldir="Lcobucci/DisplayObjects" md5sum="cfc4e584c84dcbf33ec1e0e00cb779e8" name="Extensions/JQuery/Datatable/Datatable.phtml" role="php" />
@@ -124,6 +125,36 @@ Small changes
    <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
    <notes>
 BaseUrl changed to be static
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.13</release>
+    <api>0.0.13</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-11-20</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+Added a way to retrieve the base url statically
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.0.14</release>
+    <api>0.0.14</api>
+   </version>
+   <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+   </stability>
+   <date>2012-11-20</date>
+   <license uri="http://www.opensource.org/licenses/bsd-license.php">BSD Style</license>
+   <notes>
+Added a way to retrieve the base url statically
    </notes>
   </release>
  </changelog>
