@@ -1,0 +1,24 @@
+{
+    "name": "lcobucci/display-objects",
+    "description": "A way to create UI components and use them as a object from your classes",
+    "type": "library",
+    "authors": [{
+            "name": "Luís Otávio Cobucci Oblonczyk",
+            "email": "lcobucci@gmail.com"
+        }
+    ],
+    "keywords": [
+        "UI", "Components"
+    ],
+    "license": [
+        "BSD-3-Clause"
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Lcobucci\\DisplayObjects": "src/"
+        }
+    }
+}
