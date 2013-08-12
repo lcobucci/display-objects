@@ -9,7 +9,7 @@ namespace Lcobucci\DisplayObjects\Core;
 abstract class UIComponent
 {
     /**
-     * Stores the main dirname for the template's directory
+     * Stores the base directory for the templates
      *
      * This will store the directory name to locate the templates on include path
      *
@@ -29,12 +29,10 @@ abstract class UIComponent
      */
     public static function addTemplatesDir($dir)
     {
-        if (substr($dir, -1, 1) != DIRECTORY_SEPARATOR) {
-            $dir = $dir . DIRECTORY_SEPARATOR;
-        }
+        $dir = rtrim($dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
 
-        if (!in_array($dir, self::$templatesDir)) {
-            self::$templatesDir[] = $dir;
+        if (!in_array($dir, static::$templatesDir)) {
+            static::$templatesDir[] = $dir;
         }
     }
 
@@ -45,7 +43,7 @@ abstract class UIComponent
      */
     protected function getTemplatesDir()
     {
-        return self::$templatesDir;
+        return static::$templatesDir;
     }
 
     /**
@@ -107,8 +105,9 @@ abstract class UIComponent
     }
 
     /**
-     * Returns the template content (after proccessing)
+     * Returns the template content (after processing)
      *
+     * @param string $class
      * @return string
      */
     public function show($class = null)
@@ -157,7 +156,7 @@ abstract class UIComponent
      */
     public static function setDefaultBaseUrl($baseUrl)
     {
-        self::$baseUrl = $baseUrl;
+        static::$baseUrl = rtrim($baseUrl, '/') . '/';
     }
 
     /**
@@ -165,7 +164,7 @@ abstract class UIComponent
      */
     public static function getDefaultBaseUrl()
     {
-        return self::$baseUrl;
+        return static::$baseUrl;
     }
 
     /**
@@ -173,7 +172,7 @@ abstract class UIComponent
      */
     public function setBaseUrl($baseUrl)
     {
-        self::$baseUrl = $baseUrl;
+        static::setDefaultBaseUrl($baseUrl);
     }
 
     /**
@@ -181,6 +180,15 @@ abstract class UIComponent
      */
     public function getBaseUrl()
     {
-        return self::$baseUrl;
+        return static::getDefaultBaseUrl();
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    public function getUrl($path = '')
+    {
+        return $this->getBaseUrl() . $path;
     }
 }
