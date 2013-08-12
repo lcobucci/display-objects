@@ -17,7 +17,7 @@ class SimpleList extends UIComponent
     protected $dataProvider;
 
     /**
-     * @var Lcobucci\DisplayObjects\Core\ItemRenderer
+     * @var ItemRenderer
      */
     protected $renderer;
 
@@ -26,8 +26,11 @@ class SimpleList extends UIComponent
      * @param array $dataProvider
      * @param ItemRenderer $renderer
      */
-    public function __construct($id, array $dataProvider, ItemRenderer $renderer)
-    {
+    public function __construct(
+        $id,
+        array $dataProvider,
+        ItemRenderer $renderer
+    ) {
         $this->id = $id;
         $this->dataProvider = $dataProvider;
         $this->renderer = $renderer;
@@ -51,7 +54,7 @@ class SimpleList extends UIComponent
 
 
     /**
-     * @return Lcobucci\DisplayObjects\Core\ItemRenderer
+     * @return ItemRenderer
      */
     protected function getRenderer()
     {

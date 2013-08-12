@@ -1,13 +1,13 @@
 <?php
 namespace Lcobucci\DisplayObjects\Extensions\JQuery\Datatable;
 
-use \Lcobucci\DisplayObjects\Core\UIComponent;
-use \Lcobucci\DisplayObjects\Components\Datagrid\Datagrid;
+use Lcobucci\DisplayObjects\Components\Datagrid\Datagrid;
+use Lcobucci\DisplayObjects\Core\UIComponent;
 
 class Datatable extends UIComponent
 {
     /**
-     * @var \Lcobucci\DisplayObjects\Components\Datagrid\Datagrid
+     * @var Datagrid
      */
     private $table;
 
@@ -32,8 +32,13 @@ class Datatable extends UIComponent
      * @param array $columns
      * @param array $options
      */
-    public function __construct($id, array $dataProvider, array $columns, array $options = null)
-    {
+    public function __construct(
+        $id,
+        array
+        $dataProvider,
+        array $columns,
+        array $options = null
+    ) {
         $this->table = new Datagrid($id, $dataProvider, $columns);
         $this->options = $options;
         $this->filters = array();
@@ -49,7 +54,7 @@ class Datatable extends UIComponent
     }
 
     /**
-     * @return \Lcobucci\DisplayObjects\Components\Datagrid\Datagrid
+     * @return Datagrid
      */
     public function getTable()
     {
@@ -101,7 +106,7 @@ class Datatable extends UIComponent
     }
 
     /**
-     * @param Lcobucci\DisplayObjects\Extensions\JQuery\Datatable\DatatableColumnFilter $filter
+     * @param DatatableColumnFilter $filter
      */
     public function appendFilter(DatatableColumnFilter $filter)
     {

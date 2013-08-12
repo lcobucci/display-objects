@@ -9,41 +9,32 @@ namespace Lcobucci\DisplayObjects\Core;
 abstract class UIComponent
 {
     /**
-     * Stores the base directory for the templates
-     *
-     * This will store the directory name to locate the templates on include path
-     *
-     * @var string
-     */
-    protected static $templatesDir = array('');
-
-    /**
      * @var string
      */
     protected static $baseUrl;
 
     /**
-     * Configures the template's directory
-     *
-     * @param string $dir
+     * @var bool
      */
-    public static function addTemplatesDir($dir)
-    {
-        $dir = rtrim($dir, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
-
-        if (!in_array($dir, static::$templatesDir)) {
-            static::$templatesDir[] = $dir;
-        }
-    }
+    protected static $includePathVerified = false;
 
     /**
-     * Returns the template's directory
-     *
-     * @return array
+     * Appends the library dir into the include path
      */
-    protected function getTemplatesDir()
+    protected function checkIncludePath()
     {
-        return static::$templatesDir;
+        if (static::$includePathVerified) {
+            return ;
+        }
+
+        $path = realpath(__DIR__ .'/../../../');
+        $includePath = get_include_path();
+
+        if (strpos($path, $includePath) === false) {
+            set_include_path($includePath . PATH_SEPARATOR . $path);
+        }
+
+        static::$includePathVerified = true;
     }
 
     /**
@@ -54,6 +45,8 @@ abstract class UIComponent
      */
     protected function templateExists($templateFile)
     {
+        $this->checkIncludePath();
+
         return stream_resolve_include_path($templateFile);
     }
 
@@ -66,7 +59,6 @@ abstract class UIComponent
     protected function getPath($class)
     {
         $fileName = '';
-        $namespace = '';
 
         if (false !== ($lastNsPos = strripos($class, '\\'))) {
             $namespace = substr($class, 0, $lastNsPos);
@@ -93,12 +85,10 @@ abstract class UIComponent
      */
     protected function getFile($class)
     {
-        foreach ($this->getTemplatesDir() as $dir) {
-            $templateFile = $dir . $this->getPath($class);
+        $templateFile = $this->getPath($class);
 
-            if ($this->templateExists($templateFile)) {
-                return $templateFile;
-            }
+        if ($this->templateExists($this->getPath($class))) {
+            return $templateFile;
         }
 
         throw new UIComponentNotFoundException('Template file not found for class ' . $class . '.');
