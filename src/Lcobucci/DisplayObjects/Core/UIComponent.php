@@ -19,6 +19,11 @@ abstract class UIComponent
     protected static $includePathVerified = false;
 
     /**
+     * @var array
+     */
+    protected static $templateMap = array();
+
+    /**
      * Appends the library dir into the include path
      */
     protected function checkIncludePath()
@@ -85,9 +90,15 @@ abstract class UIComponent
      */
     protected function getFile($class)
     {
+        if (isset(static::$templateMap[$class])) {
+            return static::$templateMap[$class];
+        }
+
         $templateFile = $this->getPath($class);
 
-        if ($this->templateExists($this->getPath($class))) {
+        if ($this->templateExists($templateFile)) {
+            static::$templateMap[$class] = $templateFile;
+
             return $templateFile;
         }
 
