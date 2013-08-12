@@ -15,12 +15,12 @@ abstract class UIComponent
      *
      * @var string
      */
-    private static $templatesDir = array('');
+    protected static $templatesDir = array('');
 
     /**
      * @var string
      */
-    private static $baseUrl;
+    protected static $baseUrl;
 
     /**
      * Configures the template's directory
@@ -189,6 +189,6 @@ abstract class UIComponent
      */
     public function getUrl($path = '')
     {
-        return $this->getBaseUrl() . $path;
+        return $this->getBaseUrl() . ltrim($path, '/');
     }
 }
