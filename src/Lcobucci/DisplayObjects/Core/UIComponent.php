@@ -1,6 +1,8 @@
 <?php
 namespace Lcobucci\DisplayObjects\Core;
 
+use Doctrine\Common\Cache\Cache;
+
 /**
  * Main class to create components
  *
@@ -8,6 +10,11 @@ namespace Lcobucci\DisplayObjects\Core;
  */
 abstract class UIComponent
 {
+    /**
+     * @var string
+     */
+    const CACHE_IDENTIFIER = 'template-map';
+
     /**
      * @var string
      */
@@ -19,9 +26,14 @@ abstract class UIComponent
     protected static $includePathVerified = false;
 
     /**
+     * @var Cache
+     */
+    protected static $cache;
+
+    /**
      * @var array
      */
-    protected static $templateMap = array();
+    protected static $map = array();
 
     /**
      * Appends the library dir into the include path
@@ -32,7 +44,7 @@ abstract class UIComponent
             return ;
         }
 
-        $path = realpath(__DIR__ .'/../../../');
+        $path = realpath(__DIR__ . '/../../../');
         $includePath = get_include_path();
 
         if (strpos($path, $includePath) === false) {
@@ -90,19 +102,33 @@ abstract class UIComponent
      */
     protected function getFile($class)
     {
-        if (isset(static::$templateMap[$class])) {
-            return static::$templateMap[$class];
+        if (isset(static::$map[$class])) {
+            return static::$map[$class];
         }
 
         $templateFile = $this->getPath($class);
 
         if ($this->templateExists($templateFile)) {
-            static::$templateMap[$class] = $templateFile;
-
-            return $templateFile;
+            return $this->mapFile($class, $templateFile);
         }
 
         throw new UIComponentNotFoundException('Template file not found for class ' . $class . '.');
+    }
+
+    /**
+     * @param string $class
+     * @param string $file
+     * @return string mixed
+     */
+    protected function mapFile($class, $file)
+    {
+        static::$map[$class] = $file;
+
+        if (static::$cache) {
+            static::$cache->save(static::CACHE_IDENTIFIER, static::$map);
+        }
+
+        return $file;
     }
 
     /**
@@ -153,9 +179,18 @@ abstract class UIComponent
     }
 
     /**
+     * @param Cache $cache
+     */
+    public static function setCache(Cache $cache)
+    {
+        static::$cache = $cache;
+        static::$map = $cache->fetch(static::CACHE_IDENTIFIER) ?: array();
+    }
+
+    /**
      * @param string $baseUrl
      */
-    public static function setDefaultBaseUrl($baseUrl)
+    public static function setBaseUrl($baseUrl)
     {
         static::$baseUrl = rtrim($baseUrl, '/') . '/';
     }
@@ -163,25 +198,9 @@ abstract class UIComponent
     /**
      * @return string
      */
-    public static function getDefaultBaseUrl()
-    {
-        return static::$baseUrl;
-    }
-
-    /**
-     * @param string $baseUrl
-     */
-    public function setBaseUrl($baseUrl)
-    {
-        static::setDefaultBaseUrl($baseUrl);
-    }
-
-    /**
-     * @return string
-     */
     public function getBaseUrl()
     {
-        return static::getDefaultBaseUrl();
+        return static::$baseUrl;
     }
 
     /**
