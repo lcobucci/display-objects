@@ -41,8 +41,12 @@ class Datagrid extends UIComponent
      * @param array $columns
      * @param boolean $displayFooterLabels
      */
-    public function __construct($id, array $dataProvider, array $columns, $displayFooterLabels = false)
-    {
+    public function __construct(
+        $id,
+        array $dataProvider,
+        array $columns,
+        $displayFooterLabels = false
+    ) {
         $this->id = $id;
         $this->dataProvider = $dataProvider;
         $this->columns = $columns;

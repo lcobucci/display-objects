@@ -1,8 +1,8 @@
 <?php
 namespace Lcobucci\DisplayObjects\Components\Datagrid;
 
-use \Lcobucci\DisplayObjects\Core\ItemRenderer;
-use \InvalidArgumentException;
+use Lcobucci\DisplayObjects\Core\ItemRenderer;
+use InvalidArgumentException;
 
 class DatagridColumn
 {
@@ -12,7 +12,7 @@ class DatagridColumn
     private $label;
 
     /**
-     * @var \Lcobucci\DisplayObjects\Core\ItemRenderer|string
+     * @var ItemRenderer|string
      */
     private $content;
 
@@ -22,18 +22,22 @@ class DatagridColumn
     private $class;
 
     /**
-     * @var callable|\Lcobucci\DisplayObjects\Components\Datagrid\ColumnFormatter
+     * @var callable|ColumnFormatter
      */
     private $formatter;
 
     /**
      * @param string $label
-     * @param \Lcobucci\DisplayObjects\Core\ItemRenderer|string $content
+     * @param ItemRenderer|string $content
      * @param string $class
-     * @param callable|\Lcobucci\DisplayObjects\Components\Datagrid\ColumnFormatter $formatter
+     * @param callable|ColumnFormatter $formatter
      */
-    public function __construct($label, $content, $class = '', $formatter = null)
-    {
+    public function __construct(
+        $label,
+        $content,
+        $class = '',
+        $formatter = null
+    ) {
         $this->label = $label;
         $this->content = $content;
         $this->class = $class;
@@ -59,7 +63,7 @@ class DatagridColumn
 
     /**
      * @param object $item
-     * @return \Lcobucci\DisplayObjects\Core\ItemRenderer|string
+     * @return ItemRenderer|string
      */
     public function getContent($item)
     {
@@ -109,8 +113,8 @@ class DatagridColumn
     }
 
     /**
-     * @param callable|\Lcobucci\DisplayObjects\Components\Datagrid\ColumnFormatter $formatter
-     * @throws \InvalidArgumentException
+     * @param callable|ColumnFormatter $formatter
+     * @throws InvalidArgumentException
      */
     public function setFormatter($formatter)
     {

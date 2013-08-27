@@ -1,6 +1,8 @@
 <?php
 namespace Lcobucci\DisplayObjects\Core;
 
+use Doctrine\Common\Cache\Cache;
+
 /**
  * Main class to create components
  *
@@ -9,43 +11,47 @@ namespace Lcobucci\DisplayObjects\Core;
 abstract class UIComponent
 {
     /**
-     * Stores the main dirname for the template's directory
-     *
-     * This will store the directory name to locate the templates on include path
-     *
      * @var string
      */
-    private static $templatesDir = array('');
+    const CACHE_IDENTIFIER = 'template-map';
 
     /**
      * @var string
      */
-    private static $baseUrl;
+    protected static $baseUrl;
 
     /**
-     * Configures the template's directory
-     *
-     * @param string $dir
+     * @var bool
      */
-    public static function addTemplatesDir($dir)
-    {
-        if (substr($dir, -1, 1) != DIRECTORY_SEPARATOR) {
-            $dir = $dir . DIRECTORY_SEPARATOR;
-        }
-
-        if (!in_array($dir, self::$templatesDir)) {
-            self::$templatesDir[] = $dir;
-        }
-    }
+    protected static $includePathVerified = false;
 
     /**
-     * Returns the template's directory
-     *
-     * @return array
+     * @var Cache
      */
-    protected function getTemplatesDir()
+    protected static $cache;
+
+    /**
+     * @var array
+     */
+    protected static $map = array();
+
+    /**
+     * Appends the library dir into the include path
+     */
+    protected function checkIncludePath()
     {
-        return self::$templatesDir;
+        if (static::$includePathVerified) {
+            return ;
+        }
+
+        $path = realpath(__DIR__ . '/../../../');
+        $includePath = get_include_path();
+
+        if (strpos($path, $includePath) === false) {
+            set_include_path($includePath . PATH_SEPARATOR . $path);
+        }
+
+        static::$includePathVerified = true;
     }
 
     /**
@@ -56,6 +62,8 @@ abstract class UIComponent
      */
     protected function templateExists($templateFile)
     {
+        $this->checkIncludePath();
+
         return stream_resolve_include_path($templateFile);
     }
 
@@ -68,7 +76,6 @@ abstract class UIComponent
     protected function getPath($class)
     {
         $fileName = '';
-        $namespace = '';
 
         if (false !== ($lastNsPos = strripos($class, '\\'))) {
             $namespace = substr($class, 0, $lastNsPos);
@@ -95,20 +102,39 @@ abstract class UIComponent
      */
     protected function getFile($class)
     {
-        foreach ($this->getTemplatesDir() as $dir) {
-            $templateFile = $dir . $this->getPath($class);
+        if (isset(static::$map[$class])) {
+            return static::$map[$class];
+        }
 
-            if ($this->templateExists($templateFile)) {
-                return $templateFile;
-            }
+        $templateFile = $this->getPath($class);
+
+        if ($this->templateExists($templateFile)) {
+            return $this->mapFile($class, $templateFile);
         }
 
         throw new UIComponentNotFoundException('Template file not found for class ' . $class . '.');
     }
 
     /**
-     * Returns the template content (after proccessing)
+     * @param string $class
+     * @param string $file
+     * @return string mixed
+     */
+    protected function mapFile($class, $file)
+    {
+        static::$map[$class] = $file;
+
+        if (static::$cache) {
+            static::$cache->save(static::CACHE_IDENTIFIER, static::$map);
+        }
+
+        return $file;
+    }
+
+    /**
+     * Returns the template content (after processing)
      *
+     * @param string $class
      * @return string
      */
     public function show($class = null)
@@ -153,27 +179,20 @@ abstract class UIComponent
     }
 
     /**
-     * @param string $baseUrl
+     * @param Cache $cache
      */
-    public static function setDefaultBaseUrl($baseUrl)
+    public static function setCache(Cache $cache)
     {
-        self::$baseUrl = $baseUrl;
-    }
-
-    /**
-     * @return string
-     */
-    public static function getDefaultBaseUrl()
-    {
-        return self::$baseUrl;
+        static::$cache = $cache;
+        static::$map = $cache->fetch(static::CACHE_IDENTIFIER) ?: array();
     }
 
     /**
      * @param string $baseUrl
      */
-    public function setBaseUrl($baseUrl)
+    public static function setBaseUrl($baseUrl)
     {
-        self::$baseUrl = $baseUrl;
+        static::$baseUrl = rtrim($baseUrl, '/') . '/';
     }
 
     /**
@@ -181,6 +200,15 @@ abstract class UIComponent
      */
     public function getBaseUrl()
     {
-        return self::$baseUrl;
+        return static::$baseUrl;
+    }
+
+    /**
+     * @param string $path
+     * @return string
+     */
+    public function getUrl($path = '')
+    {
+        return $this->getBaseUrl() . ltrim($path, '/');
     }
 }

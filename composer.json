@@ -14,7 +14,8 @@
         "BSD-3-Clause"
     ],
     "require": {
-        "php": ">=5.3"
+        "php": ">=5.3",
+        "doctrine/cache": "*@dev"
     },
     "autoload": {
         "psr-0": {
