@@ -171,10 +171,8 @@ abstract class UIComponent
     {
         try {
             return $this->show();
-        } catch (\PDOException $e) {
-            return '<pre>' . $e->getMessage() . '</pre>';
         } catch (\Exception $e) {
-            return '<pre>' . $e . '</pre>';
+            trigger_error((string) $e, E_USER_ERROR);
         }
     }
 
